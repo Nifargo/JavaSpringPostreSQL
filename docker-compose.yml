@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  my-database:
+    image: postgres:15.2
+    environment:
+      POSTGRES_USER: nifargo
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: example_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  my-java-service:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://my-database:5432/example_db
+      SPRING_DATASOURCE_USERNAME: nifargo
+      SPRING_DATASOURCE_PASSWORD: admin
+    depends_on:
+      - my-database
+
+volumes:
+  db-data:
