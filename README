@@ -1,0 +1,49 @@
+# Java Spring PostgreSQL Project
+
+This project is a Spring Boot application that connects to a PostgreSQL database. It uses Gradle for build automation and Docker Compose for container orchestration.
+
+## Prerequisites
+
+- Java 17
+- Gradle
+- Docker
+- Docker Compose
+
+## Getting Started
+
+### Build the Project
+
+1. Clone the repository:
+    ```sh
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
+
+2. Build the project using Gradle:
+    ```sh
+    ./gradlew build
+    ```
+
+### Running with Docker Compose
+
+1. Ensure Docker and Docker Compose are installed and running on your machine.
+
+2. Start the application using Docker Compose:
+    ```sh
+    docker-compose up --build
+    ```
+
+   This command will:
+   - Build the Docker image for the Spring Boot application.
+   - Start a PostgreSQL container.
+   - Start the Spring Boot application container.
+
+3. Access the application:
+   - The Spring Boot application will be available at `http://localhost:8081`.
+   - The PostgreSQL database will be available at `localhost:5432`.
+
+### Stopping the Application
+
+To stop the application, run:
+```sh
+docker-compose down
